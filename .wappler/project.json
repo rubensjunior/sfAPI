@@ -1,0 +1,52 @@
+{
+  "projectName": "sfAPI",
+  "styleFile": "/css/style.css",
+  "assetsFolder": "/assets",
+  "designFramework": "bootstrap5",
+  "frameworks": [
+    {
+      "name": "fontawesome_5",
+      "type": "cdn"
+    },
+    {
+      "name": "bootstrap5",
+      "type": "local"
+    },
+    {
+      "name": "appConnect",
+      "type": "local"
+    }
+  ],
+  "hostingType": "wappler",
+  "projectServerModel": "node",
+  "runtime": "capacitor",
+  "webRootFolder": "/public",
+  "useRouting": true,
+  "addBase": true,
+  "routingHandler": "node",
+  "projectLinksType": "site",
+  "targets": [
+    {
+      "name": "Development",
+      "remoteURL": "https://api.spacefeed.app",
+      "access": "ftp",
+      "targetType": "wappler",
+      "databaseConnectionType": "custom",
+      "webServerLang": "node",
+      "NodeVersion": "lts",
+      "NodeOS": "alpine",
+      "databaseType": "postgres",
+      "db_host": "aws-0-sa-east-1.pooler.supabase.com",
+      "db_port": "5432",
+      "db_user": "postgres.axagsyhlfoztzplytksr",
+      "db_password": "@Baki025@",
+      "db_database": "postgres",
+      "ftpServer": "ftp.rubensbentes.com.br",
+      "ftpUser": "master@api.spacefeed.app",
+      "ftpPassword": "v2:424d2a32b80a0909f3642987f3d0ecc1ad98fe2b9843672cdf"
+    }
+  ],
+  "activeTarget": "Development",
+  "projectType": "web",
+  "extensions": []
+}
