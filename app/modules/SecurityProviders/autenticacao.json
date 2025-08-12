@@ -1,0 +1,24 @@
+{
+  "name": "autenticacao",
+  "module": "auth",
+  "action": "provider",
+  "options": {
+    "secret": "E15tZseZZbtHK6G",
+    "provider": "Database",
+    "connection": "db",
+    "passwordVerify": true,
+    "users": {
+      "table": "usuarios",
+      "identity": "id_usuarios",
+      "username": "email",
+      "password": "senha_usuario"
+    },
+    "permissions": {}
+  },
+  "meta": [
+    {
+      "name": "identity",
+      "type": "text"
+    }
+  ]
+}
