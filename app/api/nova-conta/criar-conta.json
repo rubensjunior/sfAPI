@@ -1,0 +1,477 @@
+{
+  "meta": {
+    "$_POST": [
+      {
+        "type": "text",
+        "name": "razao_social"
+      },
+      {
+        "type": "text",
+        "name": "nome_fantasia"
+      },
+      {
+        "type": "text",
+        "name": "nome_polo"
+      },
+      {
+        "type": "text",
+        "name": "cnpj"
+      },
+      {
+        "type": "text",
+        "name": "cep"
+      },
+      {
+        "type": "text",
+        "name": "whatsapp"
+      },
+      {
+        "type": "text",
+        "name": "status_empresa"
+      },
+      {
+        "type": "text",
+        "name": "endereco"
+      },
+      {
+        "type": "text",
+        "name": "numero"
+      },
+      {
+        "type": "text",
+        "name": "complemento"
+      },
+      {
+        "type": "text",
+        "name": "bairro"
+      },
+      {
+        "type": "text",
+        "name": "cidade"
+      },
+      {
+        "type": "text",
+        "name": "uf"
+      },
+      {
+        "type": "text",
+        "name": "id_empresa"
+      },
+      {
+        "type": "text",
+        "name": "nome_completo"
+      },
+      {
+        "type": "text",
+        "name": "nome_tratamento"
+      },
+      {
+        "type": "text",
+        "name": "email"
+      },
+      {
+        "type": "text",
+        "name": "senha_usuario"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "hash",
+        "module": "crypto",
+        "action": "passwordHash",
+        "options": {
+          "algo": "argon2id",
+          "password": "{{$_POST.senha_usuario}}"
+        },
+        "outputType": "text"
+      },
+      {
+        "name": "insert_empresa",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "empresas",
+                "column": "razao_social",
+                "type": "text",
+                "value": "{{$_POST.razao_social}}"
+              },
+              {
+                "table": "empresas",
+                "column": "nome_fantasia",
+                "type": "text",
+                "value": "{{$_POST.nome_fantasia}}"
+              },
+              {
+                "table": "empresas",
+                "column": "nome_polo",
+                "type": "text",
+                "value": "{{$_POST.nome_polo}}"
+              },
+              {
+                "table": "empresas",
+                "column": "cnpj",
+                "type": "text",
+                "value": "{{$_POST.cnpj}}"
+              },
+              {
+                "table": "empresas",
+                "column": "cep",
+                "type": "text",
+                "value": "{{$_POST.cep}}"
+              },
+              {
+                "table": "empresas",
+                "column": "whatsapp",
+                "type": "text",
+                "value": "{{$_POST.whatsapp}}"
+              },
+              {
+                "table": "empresas",
+                "column": "status_empresa",
+                "type": "text",
+                "value": "{{$_POST.status_empresa}}"
+              },
+              {
+                "table": "empresas",
+                "column": "endereco",
+                "type": "text",
+                "value": "{{$_POST.endereco}}"
+              },
+              {
+                "table": "empresas",
+                "column": "numero",
+                "type": "text",
+                "value": "{{$_POST.numero}}"
+              },
+              {
+                "table": "empresas",
+                "column": "complemento",
+                "type": "text",
+                "value": "{{$_POST.complemento}}"
+              },
+              {
+                "table": "empresas",
+                "column": "bairro",
+                "type": "text",
+                "value": "{{$_POST.bairro}}"
+              },
+              {
+                "table": "empresas",
+                "column": "cidade",
+                "type": "text",
+                "value": "{{$_POST.cidade}}"
+              },
+              {
+                "table": "empresas",
+                "column": "uf",
+                "type": "text",
+                "value": "{{$_POST.uf}}"
+              }
+            ],
+            "table": "empresas",
+            "returning": "id_empresa",
+            "query": "insert into \"empresas\" (\"bairro\", \"cep\", \"cidade\", \"cnpj\", \"complemento\", \"endereco\", \"nome_fantasia\", \"nome_polo\", \"numero\", \"razao_social\", \"status_empresa\", \"uf\", \"whatsapp\") values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) returning \"id_empresa\"",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{$_POST.razao_social}}",
+                "test": ""
+              },
+              {
+                "name": ":P2",
+                "type": "expression",
+                "value": "{{$_POST.nome_fantasia}}",
+                "test": ""
+              },
+              {
+                "name": ":P3",
+                "type": "expression",
+                "value": "{{$_POST.nome_polo}}",
+                "test": ""
+              },
+              {
+                "name": ":P4",
+                "type": "expression",
+                "value": "{{$_POST.cnpj}}",
+                "test": ""
+              },
+              {
+                "name": ":P5",
+                "type": "expression",
+                "value": "{{$_POST.cep}}",
+                "test": ""
+              },
+              {
+                "name": ":P6",
+                "type": "expression",
+                "value": "{{$_POST.whatsapp}}",
+                "test": ""
+              },
+              {
+                "name": ":P7",
+                "type": "expression",
+                "value": "{{$_POST.status_empresa}}",
+                "test": ""
+              },
+              {
+                "name": ":P8",
+                "type": "expression",
+                "value": "{{$_POST.endereco}}",
+                "test": ""
+              },
+              {
+                "name": ":P9",
+                "type": "expression",
+                "value": "{{$_POST.numero}}",
+                "test": ""
+              },
+              {
+                "name": ":P10",
+                "type": "expression",
+                "value": "{{$_POST.complemento}}",
+                "test": ""
+              },
+              {
+                "name": ":P11",
+                "type": "expression",
+                "value": "{{$_POST.bairro}}",
+                "test": ""
+              },
+              {
+                "name": ":P12",
+                "type": "expression",
+                "value": "{{$_POST.cidade}}",
+                "test": ""
+              },
+              {
+                "name": ":P13",
+                "type": "expression",
+                "value": "{{$_POST.uf}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "name": "update_empresa",
+        "module": "dbupdater",
+        "action": "update",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "update",
+            "values": [
+              {
+                "table": "empresas",
+                "column": "empresa_matriz",
+                "type": "number",
+                "value": "{{insert_empresa.identity}}"
+              }
+            ],
+            "table": "empresas",
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "id_empresa",
+                  "field": "id_empresa",
+                  "type": "string",
+                  "operator": "equal",
+                  "value": "{{insert_empresa.identity}}",
+                  "data": {
+                    "column": "id_empresa"
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "returning": "id_empresa",
+            "query": "update \"empresas\" set \"empresa_matriz\" = ? where \"id_empresa\" = ? returning \"id_empresa\"",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{insert_empresa.identity}}",
+                "test": ""
+              },
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P2",
+                "value": "{{insert_empresa.identity}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "name": "insert_usuario",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "usuarios",
+                "column": "nome_completo",
+                "type": "text",
+                "value": "{{$_POST.nome_completo}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "nome_tratamento",
+                "type": "text",
+                "value": "{{$_POST.nome_tratamento}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "email",
+                "type": "text",
+                "value": "{{$_POST.email}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "senha_usuario",
+                "type": "text",
+                "value": "{{hash}}"
+              }
+            ],
+            "table": "usuarios",
+            "returning": "id_usuarios",
+            "query": "insert into \"usuarios\" (\"email\", \"nome_completo\", \"nome_tratamento\", \"senha_usuario\") values (?, ?, ?, ?) returning \"id_usuarios\"",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{$_POST.nome_completo}}",
+                "test": ""
+              },
+              {
+                "name": ":P2",
+                "type": "expression",
+                "value": "{{$_POST.nome_tratamento}}",
+                "test": ""
+              },
+              {
+                "name": ":P3",
+                "type": "expression",
+                "value": "{{$_POST.email}}",
+                "test": ""
+              },
+              {
+                "name": ":P4",
+                "type": "expression",
+                "value": "{{hash}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "name": "update_usuario",
+        "module": "dbupdater",
+        "action": "update",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "update",
+            "values": [
+              {
+                "table": "usuarios",
+                "column": "empresa_selecionada",
+                "type": "number",
+                "value": "{{insert_usuario.identity}}"
+              }
+            ],
+            "table": "usuarios",
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "id_usuarios",
+                  "field": "id_usuarios",
+                  "type": "string",
+                  "operator": "equal",
+                  "value": "{{insert_usuario.identity}}",
+                  "data": {
+                    "column": "id_usuarios"
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "returning": "id_usuarios",
+            "query": "update \"usuarios\" set \"empresa_selecionada\" = ? where \"id_usuarios\" = ?",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{insert_usuario.identity}}",
+                "test": ""
+              },
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P2",
+                "value": "{{insert_usuario.identity}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  },
+  "usedModules": {
+    "argon2": "^0.30.2"
+  }
+}
